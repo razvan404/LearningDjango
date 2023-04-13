@@ -54,13 +54,13 @@ class CreateRoomPage extends Component {
     }
 
     render() {
-        return (<Grid container spacing={1}>
-            <Grid item xs={12} align='center'>
+        return (<Grid container spacing={1} align='center'>
+            <Grid item xs={12}>
                 <Typography component='h4' variant='h4'>
                     Create a Room
                 </Typography>                
             </Grid>
-            <Grid item xs={12} align='center'>
+            <Grid item xs={12}>
                 <FormControl component='fieldset'>
                     <FormHelperText>
                         <div align='center'>Guest Control of Playback State</div>
@@ -85,7 +85,7 @@ class CreateRoomPage extends Component {
                     </RadioGroup>
                 </FormControl>             
             </Grid>
-            <Grid item xs={12} align='center'>
+            <Grid item xs={12}>
                 <FormControl>
                     <TextField 
                         required={true}
@@ -102,14 +102,14 @@ class CreateRoomPage extends Component {
                     </FormHelperText>
                 </FormControl>
             </Grid>
-            <Grid item xs={12} align='center'>
+            <Grid item xs={12}>
                 <Button 
                     color='primary'
                     variant='contained'
                     onClick={ this.handleRoomButtonPressed }
                 >Create a Room</Button>
             </Grid>
-            <Grid item xs={12} align='center'>
+            <Grid item xs={12}>
                 <Button color='secondary' variant='contained' to='/' component={Link}>Back</Button>
             </Grid>
         </Grid>);
