@@ -11,7 +11,7 @@ import {
     FormControlLabel
  } from "@material-ui/core";
 import { Link } from "react-router-dom"
-import withRouter from "./withRouter";
+import { withRouter } from "./Utils";
 
 class CreateRoomPage extends Component {
     defaultVotes = 2;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import withRouter from "./withRouter";
+import { withRouter } from "./Utils";
 
 class RoomPage extends Component {
     constructor(props) {
