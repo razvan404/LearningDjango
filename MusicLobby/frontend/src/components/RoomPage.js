@@ -79,16 +79,15 @@ class RoomPage extends Component {
     getCurrentSong() {
         fetch('/spotify/current-song')
             .then((response) => {
-                console.log(response);
                 if (response.status != 200) {
                     return {}
                 }
                 else {
                     return response.json();
                 }})
-            .then((data) => {this.setState({
+            .then((data) => this.setState({
                 song: data
-            }); console.log(data);});
+            }));
     }
 
     leaveButtonPressed() {

@@ -40,9 +40,6 @@ def refresh_spotify_token(tokens):
     access_token = response.get('access_token')
     token_type = response.get('token_type')
     expires_in = response.get('expires_in')
-    refresh_token = response.get('refresh_token')
-    if not refresh_token:
-        refresh_token = tokens.refresh_token
 
     upsert_user_tokens(tokens.user, access_token, token_type,
                        expires_in, refresh_token)
@@ -61,12 +58,21 @@ def exec_spotify_api_request(session_id, endpoint, post_=False, put_=False):
     tokens = get_user_tokens(session_id)
     headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tokens.access_token}
     if post_:
-        post(BASE_URL + endpoint, headers=headers)
+        response = post(BASE_URL + endpoint, headers=headers)
     elif put_:
-        put(BASE_URL + endpoint, headers=headers)
+        response = put(BASE_URL + endpoint, headers=headers)
     else:
         response = get(BASE_URL + endpoint, {}, headers=headers)
-        try:
-            return response.json()
-        except:
-            return {'Error': 'Issue with request'}
+    try:
+        return response.json()
+    except:
+        return {'error': 'Invalid request'}
+
+def pause_song(session_id):
+    return exec_spotify_api_request(session_id, 'player/pause', put_=True)
+
+def play_song(session_id):
+    return exec_spotify_api_request(session_id, 'player/play', put_=True)
+
+def skip_song(session_id):
+    return exec_spotify_api_request(session_id, 'player/next', post_=True)
