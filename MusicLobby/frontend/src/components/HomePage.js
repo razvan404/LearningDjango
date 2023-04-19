@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import JoinRoomPage from "./JoinRoomPage";
 import CreateRoomPage from "./CreateRoomPage";
 import RoomPage from "./RoomPage";
+import InfoPage from "./InfoPage";
 import {
     Grid,
     Button,
@@ -49,6 +50,9 @@ export default class HomePage extends Component {
                         <Button color='primary' to='/join' component={Link}>
                             Join a Room
                         </Button>
+                        <Button color='default' to='/info' component={Link}>
+                            Info
+                        </Button>
                         <Button color='secondary' to='/create' component={Link}>
                             Create a Room
                         </Button>
@@ -79,6 +83,7 @@ export default class HomePage extends Component {
                                 )
                         }}/>
                     <Route path='/join' element={<JoinRoomPage />} />
+                    <Route path='/info' element={<InfoPage />} />
                     <Route path='/create' element={<CreateRoomPage />} />
                     <Route path='/room/:roomCode' element={<RoomPage leaveRoomCallback={this.clearRoomCode} />} />
                 </Routes>
